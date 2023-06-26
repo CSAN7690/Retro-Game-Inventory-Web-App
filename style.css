@@ -1,0 +1,12 @@
+body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+header {
+    grid-column: 1 / span 2;
+    text-align: center;
+    background-color: #EA906C;
+    padding: 20px;
+}

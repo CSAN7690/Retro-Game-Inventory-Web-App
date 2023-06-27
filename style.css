@@ -1,12 +1,60 @@
 body {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    font-family: "Arial", sans-serif;
+    background-color: #EA906C;
+    margin: 0;
+    padding: 0;
 }
 
 header {
-    grid-column: 1 / span 2;
-    text-align: center;
-    background-color: #EA906C;
+    background-color: #EEE2DE;
+    color: #2B2A4C;
     padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-display: inherit;
+
+}
+
+h1 {
+    font-size: 24px;
+    margin: 10;
+}
+
+.game-resource {
+    background-color: #3E6D9C;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.game-name {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.game-price {
+    font-size: 16px;
+    color: #DD58D6;
+}
+
+.game-in-stock {
+    font-size: 14px;
+    color: #16FF00;
+}
+
+.remove-button {
+    background-color: #210062;
+    color: #009FBD;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Example of responsive styles for smaller screens */
+@media screen and (max-width: 768px) {
+    .game-resource {
+        padding: 10px 5px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
 }

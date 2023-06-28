@@ -9,9 +9,9 @@ header {
     background-color: #EEE2DE;
     color: #2B2A4C;
     padding: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-display: inherit;
-
+    font-family: Agdasima, cursive;
+    text-align: center;
+    background-image: image();
 }
 
 h1 {
@@ -23,6 +23,8 @@ h1 {
     background-color: #3E6D9C;
     padding: 10px;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .game-name {
@@ -38,6 +40,7 @@ h1 {
 .game-in-stock {
     font-size: 14px;
     color: #16FF00;
+    margin-right: 10px;
 }
 
 .remove-button {
@@ -48,7 +51,6 @@ h1 {
     cursor: pointer;
 }
 
-/* Example of responsive styles for smaller screens */
 @media screen and (max-width: 768px) {
     .game-resource {
         padding: 10px 5px;

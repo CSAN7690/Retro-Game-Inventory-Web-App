@@ -6,6 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retro Game Inventory</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        #gamelist li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #game-list img {
+            margin-right: 20px;
+        }
+
+        #game-list img {
+            margin-right: 20px;
+        }
+
+        #game-list h2,
+        #game-list p {
+            margin: 0;
+        }
+
+        #game-list button {
+            margin-left: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -13,34 +37,36 @@
         <h1>Retro Game Inventory</h1>
     </header>
     <main>
-        <ulid="game-list">
-            <li>Pokemon Red</li>
+        <ul id="game-list">
+            <!-- <li>Pokemon Red</li>
             <li>Pokemon Yellow</li>
             <li>Metroid</li>
             <li>Donkey Kong</li>
             <li>Mega Man V</li>
             <li>Kirby’s Dreamland</li>
             <li>Tetris</li>
-            <li>Super Mario Land</li>
-            </ul>
+            <li>Super Mario Land</li> -->
+        </ul>
+
+        <form id="game-form">
+            <h2>Add New Game</h2>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div>
+                <label for="price">Price:</label>
+                <input type="number" id="price" required step="0.01">
+            </div>
+            <div>
+                <label for="in-stock">In Stock:</label>
+                <input type="number" id="in-stock" required>
+            </div>
+            <button type="submit">Submit</button>
+            <button type="button" id="reset">Reset</button>
+        </form>
     </main>
-    <form id="game-form">
-        <h2>Add New Game</h2>
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" required>
-        </div>
-        <div>
-            <label for="price">Price:</label>
-            <input type="number" id="price" required step="0.01">
-        </div>
-        <div>
-            <label for="in-stock">In Stock:</label>
-            <input type="number" id="in-stock" required>
-        </div>
-        <button type="submit">Submit</button>
-        <button type="button" id="reset">Reset</button>
-    </form>
+
     <script src="script.js"></script>
 </body>
 

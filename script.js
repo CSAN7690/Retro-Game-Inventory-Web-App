@@ -6,10 +6,10 @@ const games = [
         imageURL: "https://m.media-amazon.com/images/I/61mMwMsITAL._SX300_SY300_QL70_FMwebp_.jpg",
     },
     {
-        name: "Pokemon Yellow",
-        price: 20,
-        inStock: 2,
-        imageURL: "https://m.media-amazon.com/images/I/61mjxzsm+FL._SX342_SY445_.jpg",
+        name: "1999 GBC with Pokemon Yellow",
+        price: 200,
+        inStock: 3,
+        imageURL: "https://i.ebayimg.com/images/g/fK4AAOSw7PRkkRge/s-l1600.jpg",
     },
     {
         name: "Metroid",
@@ -23,22 +23,16 @@ const games = [
         inStock: 3,
     },
     {
-        name: "Ghosts 'N Goblins",
-        price: 190,
+        name: "Metal Gear Solid",
+        price: 50,
         inStock: 3,
-        imageURL: "https://m.media-amazon.com/images/I/61ZVS3SJ1SL.jpg",
+        imageURL: "https://images.nintendolife.com/a1f57a394ee94/metal-gear-solid-cover.cover_small.jpg",
     },
     {
-        name: "Kirby's Dream Land",
+        name: "Pokémon Crystal",
         price: 12,
         inStock: 4,
-        imageURL: "https://upload.wikimedia.org/wikipedia/en/8/83/Kdl1ussmall.jpg",
-    },
-    {
-        name: " The Legend of Zelda: Link's Awakening DX ",
-        price: 10,
-        inStock: 7,
-        imageURL: "https://images.nintendolife.com/225a29540bf44/legend-of-zelda-links-awakening-dx-cover.cover_large.jpg",
+        imageURL: "https://images.nintendolife.com/4287b43b8d0b3/pokemon-crystal1-cover.cover_large.jpg",
     },
     {
         name: "Super Mario Bros. Deluxe",
@@ -46,7 +40,25 @@ const games = [
         inStock: 5,
         imageURL: "https://static.wikia.nocookie.net/nintendo/images/a/ae/SMBDeluxe_Boxart.png/revision/latest?cb=20140817223130&path-prefix=en",
     },
+
+    {
+        name: " The Legend of Zelda: Link's Awakening DX ",
+        price: 10,
+        inStock: 7,
+        imageURL: "https://images.nintendolife.com/225a29540bf44/legend-of-zelda-links-awakening-dx-cover.cover_large.jpg",
+    },
+
 ];
+
+// ✨ Resizing the image URLs. They're all wonky at first 😮‍💨
+const resizedGames = games.map((game) => {
+    if (game.imageURL) {
+        const resizedURL = game.imageURL.replace(/_.+\./, "._SY100_.");
+        return { ...game, imageURL: resizedURL };
+    } else {
+        return game;
+    }
+});
 
 document.addEventListener("DOMContentLoaded", function () {
     const gameList = document.getElementById("game-list");
@@ -54,41 +66,43 @@ document.addEventListener("DOMContentLoaded", function () {
     const nameInput = document.getElementById("name");
     const priceInput = document.getElementById("price");
     const stockInput = document.getElementById("in-stock");
-    const resetButton = document.getElementById("reset-button");
+    const resetButton = document.getElementById("reset");
 
     // Display initial game inventory
     function generateGameInventory() {
         gameList.innerHTML = "";
 
-        games.forEach(function (game) {
+        resizedGames.forEach(function (game) {
             const listItem = document.createElement("li");
             const image = document.createElement("img");
-            const nameLabel = document.createElement("h2");
-            const priceLabel = document.createElement("p");
-            const stockLabel = document.createElement("p");
+            const gameName = document.createElement("h2");
+            const gamePrice = document.createElement("p");
+            const gameInStock = document.createElement("p");
             const removeButton = document.createElement("button");
 
             image.src = game.imageURL;
-            image.alt = game.name + "Cover";
-            nameLabel.textContent = game.name;
-            priceLabel.textContent = "Price: $" + game.price;
-            stockLabel.textContent = "In Stock: " + game.inStock;
+            image.alt = game.name + " Cover";
+            image.width = 100;
+
+            gameName.textContent = game.name;
+            gamePrice.textContent = "Price: $" + game.price;
+            gameInStock.textContent = "In Stock: " + game.inStock;
             removeButton.textContent = "Remove";
 
             removeButton.addEventListener("click", function () {
                 listItem.remove();
             });
 
-            stockLabel.addEventListener("click", function () {
+            gameInStock.addEventListener("click", function () {
                 game.inStock = game.inStock === 0 ? 1 : 0;
-                stockLabel.textContent = "In Stock: " + game.inStock;
-                stockLabel.classList.toggle("out-of-stock");
+                gameInStock.textContent = "In Stock: " + game.inStock;
+                gameInStock.classList.toggle("out-of-stock");
             });
 
             listItem.appendChild(image);
-            listItem.appendChild(nameLabel);
-            listItem.appendChild(priceLabel);
-            listItem.appendChild(stockLabel);
+            listItem.appendChild(gameName);
+            listItem.appendChild(gamePrice);
+            listItem.appendChild(gameInStock);
             listItem.appendChild(removeButton);
             gameList.appendChild(listItem);
         });
@@ -125,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
             inStock: stock,
         };
 
-        games.unshift(newGame);
+        resizedGames.unshift(newGame);
 
         form.reset();
         generateGameInventory();
